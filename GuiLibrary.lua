@@ -1,3 +1,5 @@
+-- Shaman Ui Library
+
 local CoreGui = game:GetService("CoreGui")
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
@@ -580,6 +582,25 @@ tabTextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 tabTextButton.BackgroundTransparency = 1
 tabTextButton.Size = UDim2.new(0, 107, 0, 23)
 tabTextButton.Parent = tabFrame
+
+tabTextButton.MouseButton1Click:Connect(function()
+    TabSelected = tabFrame
+    task.spawn(function()
+    for _,v in pairs(main:GetChildren()) do
+        if v.Name == "LeftContainer" or v.Name == "RightContainer" then
+            v.Visible = false
+        end
+    end
+    end)
+    for _,v in pairs(scrollingContainer:GetChildren()) do
+        if v ~= tabButton and v.Name == "TabButton" then
+            TweenService:Create(v.TabFrame, TweenInfo.new(.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {BackgroundTransparency = .96}):Play()
+        end
+    end
+    TweenService:Create(tabFrame, TweenInfo.new(.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {BackgroundTransparency = .85}):Play()
+    leftContainer.Visible = true
+    rightContainer.Visible = true
+end)
 
 local uICorner3 = Instance.new("UICorner")
 uICorner3.Name = "UICorner"
@@ -1778,25 +1799,6 @@ end
 
 return sectiontable
 end
-
-tabTextButton.MouseButton1Click:Connect(function()
-    TabSelected = tabFrame
-    task.spawn(function()
-    for _,v in pairs(main:GetChildren()) do
-        if v.Name == "LeftContainer" or v.Name == "RightContainer" then
-            v.Visible = false
-        end
-    end
-    end)
-    for _,v in pairs(scrollingContainer:GetChildren()) do
-        if v ~= tabButton and v.Name == "TabButton" then
-            TweenService:Create(v.TabFrame, TweenInfo.new(.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {BackgroundTransparency = .96}):Play()
-        end
-    end
-    TweenService:Create(tabFrame, TweenInfo.new(.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {BackgroundTransparency = .85}):Play()
-    leftContainer.Visible = true
-    rightContainer.Visible = true
-end)
 
 function tab:Select()
     TabSelected = tabFrame

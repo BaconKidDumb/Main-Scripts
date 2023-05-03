@@ -1,0 +1,466 @@
+repeat task.wait() until game:IsLoaded()
+repeat task.wait() until shared.GuiLibrary
+local GuiLibrary = shared.GuiLibrary
+local ScriptSettings = {}
+local UIS = game:GetService("UserInputService")
+
+local clients = {
+	ChatStrings1 = {
+		["KVOP25KYFPPP4"] = "vape",
+		["IO12GP56P4LGR"] = "future",
+		["RQYBPTYNURYZC"] = "rektsky"
+	},
+	ChatStrings2 = {
+		["vape"] = "KVOP25KYFPPP4",
+		["future"] = "IO12GP56P4LGR",
+		["rektsky"] = "RQYBPTYNURYZC"
+	},
+	ClientUsers = {}
+}
+
+local LIB = function(tab, argstable) 
+    return GuiLibrary["ObjectsThatCanBeSaved"][tab.."Window"]["Api"].CreateOptionsButton(argstable)
+end
+local LIB2 = function(tab, argstable) 
+    return GuiLibrary["ObjectsThatCanBeSaved"][tab.."Window"]["Api"].CreateToggle(argstable)
+end
+local LIB3 = function(tab, argstable) 
+    return GuiLibrary["ObjectsThatCanBeSaved"][tab.."Window"]["Api"].CreateTextbox(argstable)
+end
+local LIB4 = function(tab, argstable) 
+    return GuiLibrary["ObjectsThatCanBeSaved"][tab.."Window"]["Api"].CreateSlider(argstable)
+end
+
+
+function notify(text)
+    local frame = GuiLibrary["CreateNotification"]("Client Notification", text, 5, "assets/WarningNotification.png")
+    frame.Frame.Frame.ImageColor3 = Color3.fromRGB(255, 64, 64)
+end
+function boxnotify(text)
+    if messagebox then
+        messagebox(text, "Vape V4", 0)
+     end
+end
+
+
+notify("Vape Private V4 Loaded..")
+
+local CustomConfig = LIB("Render", {
+    Name = "Vape Private Config",
+    Function = function(callback) 
+        if callback then
+		notify("Coming Soon..")
+        end
+    end,
+    Default = false,
+    HoverText = "Vape Private, Newest config."
+})
+
+local RedLigthing = LIB("Render", {
+    Name = "Red Sky",
+    Function = function(callback) 
+        if callback then
+game.Lighting.Sky.SkyboxBk = "rbxassetid://6444884337"
+            game.Lighting.Sky.SkyboxDn = "rbxassetid://6444884785"
+            game.Lighting.Sky.SkyboxFt = "rbxassetid://6444884337"
+            game.Lighting.Sky.SkyboxLf = "rbxassetid://6444884337"
+            game.Lighting.Sky.SkyboxRt = "rbxassetid://6444884337"
+            game.Lighting.Sky.SkyboxUp = "rbxassetid://6412503613"
+            game.Lighting.FogColor = Color3.new(68, 1, 19)
+            game.Lighting.FogEnd = "200"
+            game.Lighting.FogStart = "0"
+            game.Lighting.Ambient = Color3.new(85, 0, 0)
+        else
+            game.Lighting.Sky.SkyboxBk = "http://www.roblox.com/asset/?id=7018684000"
+            game.Lighting.Sky.SkyboxDn = "http://www.roblox.com/asset/?id=6334928194"
+            game.Lighting.Sky.SkyboxFt = "http://www.roblox.com/asset/?id=7018684000"
+            game.Lighting.Sky.SkyboxLf = "http://www.roblox.com/asset/?id=7018684000"
+            game.Lighting.Sky.SkyboxRt = "http://www.roblox.com/asset/?id=7018684000"
+            game.Lighting.Sky.SkyboxUp = "http://www.roblox.com/asset/?id=7018689553"
+            game.Lighting.FogColor = Color3.new(1, 1, 1)
+            game.Lighting.FogEnd = "10000"
+            game.Lighting.FogStart = "0"
+            game.Lighting.Ambient = Color3.new(0, 0, 0)
+	    end
+    end,
+    Default = false,
+    HoverText = "Red sky matches the avatar"
+})
+
+
+local AmazingLigthing = LIB("Render", {
+    Name = "AmazingLigthing",
+    Function = function(callback) 
+        if callback then
+         --[[
+	
+	Graphics (+) - ItsPlasmaRBLX.
+	
+--]]
+
+--//# Script runs ingame!
+local Lighting = game:GetService("Lighting");
+local TerrainService = game:GetService("Workspace").Terrain
+
+local Enabled = true
+
+local TerrainPlusEnabled = false
+local BetterLightingEnabled = true
+
+--//# Lighting Setup
+
+function SetupLighting_()
+	
+	local ColorCorrection = Instance.new("ColorCorrectionEffect")
+	local SunRays = Instance.new("SunRaysEffect")
+	local Blur = Instance.new("BlurEffect")
+	
+	local Sky = Instance.new("Sky")
+	local Atmosphere = Instance.new("Atmosphere")
+	local Clouds = Instance.new("Clouds")
+	
+	--// Remove all post effects.
+	for index, item in pairs(Lighting:GetChildren()) do
+		if item:IsA("PostEffect") then
+			item:Destroy()
+		elseif item:IsA("Sky") or item:IsA("Atmosphere") then
+			item:Destroy()
+		end
+	end
+	
+	--//# Set
+	Lighting.Brightness = 1
+	Lighting.EnvironmentDiffuseScale = .2
+	Lighting.EnvironmentSpecularScale = .82
+	SunRays.Parent = Lighting
+	Atmosphere.Parent = Lighting
+	Sky.Parent = Lighting
+	Blur.Size = 3.921
+	Blur.Parent = Lighting
+	ColorCorrection.Parent = Lighting
+	ColorCorrection.Saturation = .092
+	
+	Clouds.Parent = TerrainService
+	Clouds.Cover = .4;
+end
+
+--//# Terrain Setup
+function SetupTerrain()
+	local Terrain = game.Workspace.Terrain;
+	Terrain.WaterTransparency = 1
+	Terrain.WaterReflectance = 1
+end
+
+if Enabled then
+	if TerrainPlusEnabled then
+		SetupTerrain()
+	end
+	if BetterLightingEnabled then
+		SetupLighting_()
+	end
+elseif not Enabled then
+	error("Script Disabled.")
+	return false
+end
+
+--|| Setting Script Parent! ||--
+script.Parent = game:GetService("ServerScriptService")
+        end
+    end,
+    Default = false,
+    HoverText = "Graphics"
+})
+
+local RbHotbar = LIB("Render", {
+    Name = "Rainbow Hotbar",
+    Function = function(callback) 
+        if callback then
+		function SmokeRB(X) return math.acos(math.cos(X*math.pi))/math.pi end
+
+counter = 0
+
+while wait(0.1)do
+ game.Players.LocalPlayer.PlayerGui.hotbar['1'].HotbarHealthbarContainer.HealthbarProgressWrapper['1'].BackgroundColor3 = Color3.fromHSV(SmokeRB(counter),1,1)
+ 
+ counter = counter + 0.01
+end
+        end
+    end,
+    Default = false,
+    HoverText = "Rainbow Hotbar idk."
+})
+
+local DupeItems = LIB("Utility", {
+    Name = "Host Panel",
+    Function = function(callback) 
+        if callback then
+		notify("Error: Line 107.")
+        end
+    end,
+    Default = false,
+    HoverText = "Patched"
+})
+
+local BetterReach = LIB("Combat", {
+    Name = "Better Reach",
+    Function = function(callback) 
+        if callback then
+		notify("BetterReach Is Coming Soon..")
+        end
+    end,
+    Default = false,
+    HoverText = "Max Reach Distance: 50"
+})
+
+runcode(function()
+local AnticheatBypassCombatCheck = LIB("Combat", {
+    Name = "Combat Check",
+    Function = function(callback) 
+       if callback then 
+				task.spawn(function()
+					repeat 
+						task.wait(0.1)
+						if (not AnticheatBypassCombatCheck["Enabled"]) then break end
+						if AnticheatBypass["Enabled"] then 
+							local plrs = GetAllNearestHumanoidToPosition(true, 30, 1)
+							combatcheck = #plrs > 0 and (not GuiLibrary["ObjectsThatCanBeSaved"]["LongJumpOptionsButton"]["Api"]["Enabled"]) and (not GuiLibrary["ObjectsThatCanBeSaved"]["FlyOptionsButton"]["Api"]["Enabled"])
+							if combatcheck ~= changecheck then 
+								if not combatcheck then 
+									combatchecktick = tick() + 1
+								end
+								changecheck = combatcheck
+							end
+						end
+					until (not AnticheatBypassCombatCheck["Enabled"])
+				end)
+			else
+				combatcheck = false
+			end
+		end,
+		Default = true,
+                HoverText = "AnticheatBypass CombatCheck"
+})
+end)
+
+local DupeItems = LIB("Utility", {
+    Name = "Dupe",
+    Function = function(callback) 
+        if callback then
+		notify("Dupe Is Currently Patched..")
+        end
+    end,
+    Default = false,
+    HoverText = "Dupe the items you are holding."
+})
+
+runcode(function()
+	local function findplayers(arg)
+		for i,v in pairs(game:GetService("Players"):GetChildren()) do if v.Name:lower():sub(1, arg:len()) == arg:lower() then return v end end
+		return nil
+	end
+
+	local PlayerCrasher = {["Enabled"] = false}
+	local PlayerCrasherPower = {["Value"] = 2}
+	local PlayerCrasherDelay = {["Value"] = 2}
+	local PlayerCrasherBox = {["Value"] = ""}
+	local targetedplayer	
+	PlayerCrasher = LIB("Utility", {
+		["Name"] = "PlayerCrasher",
+		["Function"] = function(callback)
+			if callback then
+				for i,v in pairs(game:GetService("ReplicatedStorage"):GetDescendants()) do
+					if (v.Name:find("arty") or v.Name:find("otification"))and v:IsA("RemoteEvent") then
+						for i2,v2 in pairs(getconnections(v.OnClientEvent)) do 
+							v2:Disable()
+						end
+					end
+				end
+				spawn(function()
+					repeat
+						task.wait(3)
+						createwarning("PlayerCrasher", targetedplayer and "Crashing "..(targetedplayer.DisplayName or targetedplayer.Name) or "Player not found", 3)
+					until (not PlayerCrasher["Enabled"])
+				end)
+				spawn(function()
+					repeat
+						task.wait(PlayerCrasherDelay["Value"] == 0 and nil or PlayerCrasherDelay["Value"] / 10)
+						local plr = findplayers(PlayerCrasherBox["Value"])
+						targetedplayer = plr
+						if plr then
+							spawn(function()
+								for i = 1, PlayerCrasherPower["Value"] do 
+									bedwars["LobbyClientEvents"].inviteToParty({
+										player = plr
+									})
+									bedwars["LobbyClientEvents"].leaveParty()
+								end
+							end)
+						end
+					until (not PlayerCrasher["Enabled"])
+				end)
+			end
+		end
+	})
+	PlayerCrasherBox = PlayerCrasher.CreateTextBox({
+		["Name"] = "Player",
+		["TempText"] = "player target",
+		["FocusLost"] = function(enter) end
+	})
+	PlayerCrasherPower = PlayerCrasher.CreateSlider({
+		["Name"] = "Requests per second",
+		["Min"] = 1,
+		["Max"] = 10,
+		["Default"] = 2,
+		["Function"] = function() end
+	})
+	PlayerCrasherDelay = PlayerCrasher.CreateSlider({
+		["Name"] = "Seconds per request",
+		["Min"] = 0,
+		["Max"] = 10,
+		["Default"] = 0,
+		["Function"] = function() end
+	})
+end)
+
+
+
+local EmeraldArmour = LIB("Utility", {
+    Name = "Get Emerald Pack",
+    Function = function(callback) 
+        if callback then
+		local lplr = game.Players.LocalPlayer
+
+game.ReplicatedStorage.Items.emerald_sword:Clone().Parent = game.ReplicatedStorage.Inventories[lplr.Name]
+game.ReplicatedStorage.Items.emerald_helmet:Clone().Parent = game.ReplicatedStorage.Inventories[lplr.Name]
+game.ReplicatedStorage.Items.emerald_boots:Clone().Parent = game.ReplicatedStorage.Inventories[lplr.Name]
+game.ReplicatedStorage.Items.emerald_chestplate:Clone().Parent = game.ReplicatedStorage.Inventories[lplr.Name]
+        end
+    end,
+    Default = false,
+    HoverText = "Gives you emerald tools and emerald armour."
+})
+
+local AntiCrash = LIB("World", {
+    Name = "AntiCrash",
+    Function = function(callback) 
+        if callback then
+            ScriptSettings.AntiCrash = true
+            while wait(1.5) do
+                if not ScriptSettings.AntiCrash == true then return end
+                if game:GetService("Workspace"):GetRealPhysicsFPS() < ScriptSettings.AntiCrash_MinFps then
+                    game:Shutdown()
+                    boxnotify("FPS Are under minimum. Closed game.")
+                end  
+                if math.floor(tonumber(game:GetService("Stats"):FindFirstChild("PerformanceStats").Ping:GetValue())) > ScriptSettings.AntiCrash_MaxPing then
+                    game:Shutdown()
+		    boxnotify("Ping Are over maximum. Closed game.")
+                end
+            end       
+        else
+            ScriptSettings.AntiCrash = false
+        end
+    end,
+    Default = false,
+    HoverText = "Automatically shutdowns game when fps or ping too low/high"
+})
+AntiCrash.CreateSlider({
+    ["Name"] = "MinFps",
+    ["Min"] = 0,
+    ["Max"] = 100,
+    ["Function"] = function(val)
+        ScriptSettings.AntiCrash_MinFps = val
+    end,
+    ["HoverText"] = "Minimum fps before closing roblox",
+    ["Default"] = 10
+})
+AntiCrash.CreateSlider({
+    ["Name"] = "MaxPing",
+    ["Min"] = 1000,
+    ["Max"] = 100000,
+    ["Function"] = function(val)
+        ScriptSettings.AntiCrash_MaxPing = val
+    end,
+    ["HoverText"] = "Minimum fps before closing roblox",
+    ["Default"] = 10
+})
+
+local OldAntiVoid = LIB("World", {
+    Name = "Stud Antivoid",
+    Function = function(callback) 
+        if callback then
+            local antivoidpart = Instance.new("Part", Workspace)
+            antivoidpart.Name = "AntiVoid"
+            antivoidpart.Size = Vector3.new(2100, 0.5, 2000)
+            antivoidpart.Position = Vector3.new(160.5, 25, 247.5)
+            antivoidpart.Transparency = 0.4
+            antivoidpart.Anchored = true
+            antivoidpart.Touched:connect(function(dumbcocks)
+                if dumbcocks.Parent:WaitForChild("Humanoid") and dumbcocks.Parent.Name == lplr.Name then
+                    game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+                    wait(0.2)
+                    game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+                    wait(0.2)
+                    game.Players.LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+                end
+            end)
+        end
+    end,
+    Default = false,
+    HoverText = "Stud Antivoid"
+})
+
+local BigHead = LIB("Render", {
+    Name = "BigHead",
+    Function = function(callback) 
+        if callback then
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/sysGhost-aka-BiKode/Scripts2022/main/BigHeadV3_Unpatched", true))()
+        end
+    end,
+    Default = false,
+    HoverText = "FE BigHead (requires rthro head)"
+})
+
+local ChatCrasher = LIB("Utility", {
+    Name = "ChatCrasher",
+    Function = function(callback) 
+        if callback then
+			while true do
+				wait(1.7)
+				local args = {
+				    [1] = " ",
+				    [2] = "All"
+				}
+				game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+			end
+        end
+    end,
+    Default = false,
+    HoverText = "Disables Chat"
+})
+
+local InfKills = LIB("Render", {
+    Name = "Inf Kills",
+    Function = function(callback) 
+        if callback then
+			game.Players.LocalPlayer.leaderstats.Kills.Value = 10000000
+        end
+    end,
+    Default = false,
+    HoverText = "Inf kills"
+})
+
+local InfiniteJump = LIB("Blatant", {
+    Name = "Infinite Jump",
+    Function = function(callback) 
+        if callback then
+			local InfiniteJumpEnabled = true
+			game:GetService("UserInputService").JumpRequest:connect(function()
+			if InfiniteJumpEnabled then
+				game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+			end
+		end)
+        end
+    end,
+    Default = false,
+    HoverText = "Infinite Jump (No Going Back LOL)"
+})
